@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ste Bel & Dam Bâtiment SARL — Travaux Divers, Constructions & Négoce · Tinghir</title>
+  <meta name="description" content="Société marocaine de construction, d'études et d'installation de systèmes d'irrigation et de négoce de matériaux, basée à Tinghir dans la vallée du Toudgha. ICE 001715551000048." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      /* ---- Brand palette ---- */
+      --navy-900: #0E1F3E;
+      --navy-800: #1B355F;
+      --navy-700: #2C4E82;
+
+      --amber-500: #DE8B2A;
+      --amber-600: #B36B15;
+      --amber-400: #E9A353;
+
+      --paper:      #FAF6EC;
+      --paper-warm: #F1E8D2;
+      --paper-cool: #F5F0E4;
+
+      --line:        rgba(14, 31, 62, 0.14);
+      --line-strong: rgba(14, 31, 62, 0.32);
+
+      --font-display: "Fraunces", "Times New Roman", serif;
+      --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --container: 1360px;
+      --gutter: clamp(20px, 4vw, 56px);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      color: var(--navy-900);
+      background: linear-gradient(180deg, var(--paper-warm) 0%, var(--paper) 40%, var(--paper-cool) 100%);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    /* ---------- Motif amazigh ---------- */
+    .amazigh-line {
+      width: 100%;
+      height: 18px;
+      display: block;
+      color: var(--navy-800);
+      opacity: 0.35;
+    }
+
+    /* ---------- Navigation ---------- */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      padding: 18px var(--gutter);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.35s ease, backdrop-filter 0.35s ease, border-color 0.35s ease, padding 0.35s ease;
+      border-bottom: 1px solid transparent;
+    }
+    .nav.is-scrolled {
+      background: rgba(250, 246, 236, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom-color: var(--line);
+      padding-top: 14px; padding-bottom: 14px;
+    }
+
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand-mark { width: 44px; height: 40px; flex-shrink: 0; }
+    .brand-word {
+      display: flex; flex-direction: column;
+      line-height: 1; color: var(--navy-800);
+    }
+    .brand-word strong {
+      font-family: var(--font-sans);
+      font-weight: 700; font-size: 14px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      display: flex; align-items: baseline; gap: 4px;
+    }
+    .brand-word strong sup {
+      font-size: 9px; font-weight: 500;
+      color: var(--amber-600); letter-spacing: 0.08em;
+    }
+    .brand-word small {
+      font-family: var(--font-display);
+      font-style: italic; font-weight: 400;
+      font-size: 11px; color: var(--navy-700);
+      margin-top: 4px; letter-spacing: 0.01em;
+    }
+
+    .nav-menu {
+      display: flex; align-items: center; gap: 32px;
+      list-style: none; margin: 0; padding: 0;
+    }
+    .nav-menu a {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--navy-800); padding: 6px 0;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    .nav-menu a:hover { color: var(--amber-600); }
+    .nav-menu a.active { border-bottom-color: var(--amber-500); }
+
+    .nav-cta {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      padding: 12px 22px; background: var(--navy-800);
+      color: var(--paper); border-radius: 999px;
+      transition: background 0.2s ease;
+    }
+    .nav-cta:hover { background: var(--amber-500); }
+
+    .nav-toggle { display: none; background: none; border: none; padding: 8px; cursor: pointer; }
+    .nav-toggle span { display: block; width: 24px; height: 1.5px; background: var(--navy-800); margin: 6px 0; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      padding: 140px var(--gutter) 80px;
+      max-width: var(--container);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(280px, 1fr) minmax(0, 1.6fr);
+      gap: clamp(24px, 5vw, 80px);
+      align-items: end;
+      min-height: 100vh;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--amber-600); margin-bottom: 32px;
+    }
+    .hero-eyebrow::before {
+      content: ""; width: 32px; height: 1px; background: var(--amber-500);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-variation-settings: "opsz" 144;
+      font-size: clamp(44px, 6.2vw, 88px);
+      line-height: 0.98; letter-spacing: -0.02em;
+      margin: 0 0 40px; color: var(--navy-900);
+    }
+    .hero-title em { font-style: italic; font-weight: 300; color: var(--amber-600); }
+
+    .hero-lede {
+      font-size: 16px; line-height: 1.6;
+      color: rgba(14, 31, 62, 0.72);
+      max-width: 40ch; margin-bottom: 40px;
+    }
+
+    .hero-meta {
+      display: flex; gap: 40px;
+      padding-top: 24px; border-top: 1px solid var(--line);
+    }
+    .hero-meta > div { display: flex; flex-direction: column; gap: 4px; }
+    .hero-meta dt {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.24em; text-transform: uppercase;
+      color: rgba(14, 31, 62, 0.6);
+    }
+    .hero-meta dd {
+      font-family: var(--font-display);
+      font-size: 22px; font-weight: 500; margin: 0;
+      color: var(--navy-900);
+    }
+
+    .hero-visual {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      max-height: 78vh;
+      overflow: hidden;
+      border-radius: 4px 4px 180px 4px;
+      background: var(--navy-800);
+      margin: 0;
+    }
+    .hero-visual img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: 35% center;
+      transform: scale(1.02);
+      transition: transform 8s ease;
+    }
+    .hero-visual:hover img { transform: scale(1.08); }
+
+    .hero-location {
+      position: absolute; right: 0; bottom: 0;
+      background: var(--navy-900); color: var(--paper);
+      padding: 24px 32px;
+      display: flex; flex-direction: column; gap: 4px;
+      min-width: 220px;
+      border-top: 3px solid var(--amber-500);
+    }
+    .hero-location small {
+      font-size: 10px; letter-spacing: 0.28em;
+      text-transform: uppercase; color: rgba(250, 246, 236, 0.6);
+    }
+    .hero-location strong {
+      font-family: var(--font-display);
+      font-size: 24px; font-weight: 600; letter-spacing: 0.02em;
+    }
+
+    /* ---------- Section shell ---------- */
+    section { padding: clamp(80px, 10vw, 140px) 0; position: relative; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: clamp(24px, 6vw, 96px);
+      margin-bottom: 80px;
+    }
+
+    .section-num {
+      font-family: var(--font-display);
+      font-weight: 500; font-size: 14px; letter-spacing: 0.24em;
+      color: var(--amber-600);
+    }
+    .section-num::before {
+      content: ""; display: inline-block; width: 24px; height: 1px;
+      background: currentColor; vertical-align: middle; margin-right: 12px;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-variation-settings: "opsz" 144;
+      font-size: clamp(36px, 4.6vw, 62px);
+      line-height: 1.02; letter-spacing: -0.02em;
+      margin: 16px 0 0; color: var(--navy-900);
+    }
+    .section-title em { font-style: italic; font-weight: 300; color: var(--amber-600); }
+
+    /* ---------- À propos ---------- */
+    .about {
+      background: linear-gradient(180deg, transparent 0%, var(--paper) 20%);
+    }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(24px, 5vw, 80px); align-items: start;
+    }
+    .about-text p {
+      font-size: 17px; line-height: 1.65;
+      color: rgba(14, 31, 62, 0.82); margin: 0 0 24px;
+    }
+    .about-text p:first-child::first-letter {
+      font-family: var(--font-display);
+      font-size: 3.4em; font-weight: 400;
+      float: left; line-height: 0.9;
+      margin: 8px 12px 0 0; color: var(--amber-500);
+    }
+
+    .about-figures {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+      margin-top: 40px; padding-top: 40px;
+      border-top: 1px solid var(--line);
+    }
+    .figure { display: flex; flex-direction: column; gap: 8px; }
+    .figure-num {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 3.6vw, 48px);
+      font-weight: 500; line-height: 1; letter-spacing: -0.02em;
+      color: var(--navy-900);
+    }
+    .figure-num sup {
+      font-size: 0.4em; font-weight: 400;
+      color: var(--amber-600); vertical-align: super; margin-left: 4px;
+    }
+    .figure-label {
+      font-size: 12px; font-weight: 500;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(14, 31, 62, 0.6);
+    }
+
+    /* ---------- Métiers ---------- */
+    .metiers { background: var(--paper-cool); position: relative; }
+    .metiers-list {
+      display: flex; flex-direction: column;
+      border-top: 1px solid var(--line-strong);
+    }
+    .metier {
+      display: grid; grid-template-columns: 80px 1fr 2fr 1fr;
+      gap: clamp(16px, 3vw, 48px);
+      padding: 48px 0;
+      border-bottom: 1px solid var(--line-strong);
+      align-items: start;
+      transition: padding 0.3s ease, background 0.3s ease;
+    }
+    .metier:hover {
+      padding-left: 24px;
+      background: linear-gradient(90deg, rgba(222, 139, 42, 0.06) 0%, transparent 60%);
+    }
+
+    .metier-num {
+      font-family: var(--font-display);
+      font-size: 14px; font-weight: 500; letter-spacing: 0.14em;
+      color: var(--amber-600); padding-top: 12px;
+    }
+    .metier-title {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 400; line-height: 1.05; letter-spacing: -0.01em;
+      margin: 0; color: var(--navy-900);
+    }
+    .metier-desc {
+      font-size: 15px; line-height: 1.6;
+      color: rgba(14, 31, 62, 0.75); margin: 0;
+    }
+    .metier-tags {
+      display: flex; flex-direction: column; gap: 8px; align-items: flex-end;
+    }
+    .metier-tag {
+      font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase;
+      color: var(--navy-700);
+      padding: 6px 14px; border: 1px solid var(--line-strong);
+      border-radius: 999px;
+    }
+
+    /* ---------- Chantiers ---------- */
+    .chantiers {
+      background: var(--paper);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .chantiers-intro {
+      max-width: 60ch;
+      font-size: 16px; line-height: 1.65;
+      color: rgba(14, 31, 62, 0.72);
+      margin-bottom: 64px;
+    }
+
+    .chantier-item {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: clamp(24px, 4vw, 64px);
+      margin-bottom: clamp(60px, 8vw, 96px);
+      align-items: start;
+    }
+    .chantier-item:last-child { margin-bottom: 0; }
+
+    .chantier-caption {
+      position: sticky; top: 100px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line-strong);
+    }
+    .chantier-caption h3 {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 2.4vw, 34px);
+      font-weight: 400; line-height: 1.1; letter-spacing: -0.01em;
+      margin: 0 0 16px;
+      color: var(--navy-900);
+    }
+    .chantier-caption p {
+      font-size: 14px; line-height: 1.55;
+      color: rgba(14, 31, 62, 0.7); margin: 0 0 20px;
+    }
+    .chantier-meta {
+      display: flex; flex-direction: column; gap: 6px;
+      font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: rgba(14, 31, 62, 0.55);
+    }
+    .chantier-meta span::before {
+      content: ""; display: inline-block; width: 16px; height: 1px;
+      background: var(--amber-500);
+      vertical-align: middle; margin-right: 10px;
+    }
+
+    /* Visuals: single frame or a pair (diptych) */
+    .chantier-visual { display: grid; gap: 16px; }
+    .chantier-visual--pair { grid-template-columns: 1fr 1fr; }
+
+    .chantier-frame {
+      position: relative;
+      overflow: hidden;
+      border-radius: 4px;
+      background: var(--navy-800);
+      aspect-ratio: 4 / 3;
+    }
+    .chantier-frame img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.9s cubic-bezier(0.2, 0.6, 0.2, 1);
+    }
+    .chantier-frame:hover img { transform: scale(1.03); }
+
+    .chantier-frame--tall { aspect-ratio: 4 / 5; }
+    .chantier-frame--portrait { aspect-ratio: 3 / 4; }
+
+    .chantier-tag {
+      position: absolute;
+      top: 16px; left: 16px;
+      padding: 6px 14px;
+      background: rgba(14, 31, 62, 0.85);
+      color: var(--paper);
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      font-weight: 500;
+      border-radius: 999px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 2;
+    }
+    .chantier-tag--accent {
+      background: var(--amber-500);
+      color: var(--navy-900);
+    }
+
+    /* ---------- Réalisations ---------- */
+    .realisations { background: var(--navy-900); color: var(--paper); }
+    .realisations .section-num { color: var(--amber-400); }
+    .realisations .section-title { color: var(--paper); }
+    .realisations .section-title em { color: var(--amber-400); }
+    .realisations .amazigh-line { color: var(--paper); opacity: 0.25; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 120px;
+      gap: 16px;
+    }
+    .gallery-item {
+      position: relative; overflow: hidden;
+      background: var(--navy-800);
+      display: block;
+    }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.9s cubic-bezier(0.2, 0.6, 0.2, 1);
+      filter: brightness(0.95) saturate(1.05);
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-item::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, transparent 50%, rgba(14, 31, 62, 0.85) 100%);
+      pointer-events: none;
+    }
+    .gallery-caption {
+      position: absolute; bottom: 20px; left: 20px; right: 20px;
+      z-index: 2; display: flex; justify-content: space-between;
+      align-items: end; gap: 12px;
+    }
+    .gallery-caption h4 {
+      font-family: var(--font-display);
+      font-size: 20px; font-weight: 500; margin: 0;
+      color: var(--paper);
+    }
+    .gallery-caption span {
+      font-size: 10px; letter-spacing: 0.24em;
+      text-transform: uppercase; color: var(--amber-400);
+    }
+
+    .g-a { grid-column: span 7; grid-row: span 4; }
+    .g-b { grid-column: span 5; grid-row: span 4; }
+    .g-c { grid-column: span 4; grid-row: span 3; }
+    .g-d { grid-column: span 4; grid-row: span 3; }
+    .g-e { grid-column: span 4; grid-row: span 3; }
+    .g-f { grid-column: span 5; grid-row: span 4; }
+    .g-g { grid-column: span 7; grid-row: span 4; }
+    .g-h { grid-column: span 4; grid-row: span 3; }
+    .g-i { grid-column: span 4; grid-row: span 3; }
+    .g-j { grid-column: span 4; grid-row: span 3; }
+    .g-k { grid-column: span 5; grid-row: span 4; }
+    .g-l { grid-column: span 7; grid-row: span 4; }
+
+    /* ---------- Repères ---------- */
+    .reperes .section-head { margin-bottom: 40px; }
+    .reperes-grid {
+      display: grid; grid-template-columns: 1.4fr 1fr;
+      gap: clamp(24px, 5vw, 80px); align-items: start;
+    }
+    .reperes-list {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+      border-top: 1px solid var(--line-strong);
+    }
+    .repere {
+      padding: 32px 24px 32px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .repere:nth-child(odd) { padding-right: 24px; }
+    .repere:nth-child(even) { padding-left: 24px; border-left: 1px solid var(--line); }
+    .repere-key {
+      font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+      color: var(--amber-600); margin-bottom: 12px; display: block;
+    }
+    .repere-val {
+      font-family: var(--font-display);
+      font-size: 22px; font-weight: 500; line-height: 1.2;
+      color: var(--navy-900);
+    }
+    .repere-val.mono {
+      font-family: "Fraunces", monospace;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.04em;
+    }
+    .repere-note {
+      display: block; margin-top: 6px;
+      font-family: var(--font-sans);
+      font-size: 13px; color: rgba(14, 31, 62, 0.6);
+    }
+
+    .reperes-quote {
+      padding: 40px;
+      background: var(--paper-warm);
+      border-radius: 4px 4px 4px 120px;
+      position: sticky; top: 100px;
+      border-left: 3px solid var(--amber-500);
+    }
+    .reperes-quote blockquote {
+      margin: 0;
+      font-family: var(--font-display);
+      font-weight: 400; font-style: italic;
+      font-size: clamp(20px, 2vw, 26px); line-height: 1.35;
+      color: var(--navy-900);
+    }
+    .reperes-quote blockquote::before {
+      content: "«"; display: block;
+      font-size: 4em; line-height: 0.6;
+      color: var(--amber-500); margin-bottom: 12px;
+    }
+    .reperes-quote cite {
+      display: block; margin-top: 24px;
+      font-family: var(--font-sans); font-style: normal;
+      font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+      color: rgba(14, 31, 62, 0.6);
+    }
+
+    /* ---------- Contact ---------- */
+    .contact { background: var(--navy-800); color: var(--paper); }
+    .contact .section-num { color: var(--amber-400); }
+    .contact .section-title { color: var(--paper); }
+    .contact .section-title em { color: var(--amber-400); }
+
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(24px, 5vw, 80px);
+    }
+    .contact-lede {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 2.4vw, 32px);
+      font-weight: 300; line-height: 1.3;
+      color: var(--paper); margin: 0 0 40px;
+    }
+    .contact-block {
+      padding: 24px 0;
+      border-top: 1px solid rgba(250, 246, 236, 0.18);
+    }
+    .contact-block:last-child { border-bottom: 1px solid rgba(250, 246, 236, 0.18); }
+    .contact-block dt {
+      font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase;
+      color: rgba(250, 246, 236, 0.55); margin-bottom: 8px;
+    }
+    .contact-block dd {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 20px; font-weight: 400; line-height: 1.4;
+    }
+    .contact-block a { border-bottom: 1px solid transparent; transition: border-color 0.2s ease; }
+    .contact-block a:hover { border-bottom-color: var(--amber-400); }
+
+    .contact-cta {
+      display: inline-flex; align-items: center; gap: 14px;
+      padding: 20px 32px;
+      background: var(--amber-500); color: var(--navy-900);
+      border-radius: 999px;
+      font-size: 13px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      margin-top: 40px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .contact-cta:hover { background: var(--amber-400); transform: translateX(4px); }
+    .contact-cta svg { width: 18px; height: 18px; }
+
+    /* ---------- Footer ---------- */
+    .footer {
+      background: var(--navy-900);
+      color: rgba(250, 246, 236, 0.6);
+      padding: 40px var(--gutter);
+      font-size: 12px; letter-spacing: 0.06em;
+    }
+    .footer-inner {
+      max-width: var(--container); margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-inner strong { color: var(--paper); font-weight: 500; }
+    .footer-ice { font-variant-numeric: tabular-nums; letter-spacing: 0.08em; }
+
+    /* ---------- Scroll reveal ---------- */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 1s ease, transform 1s cubic-bezier(0.2, 0.6, 0.2, 1);
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 960px) {
+      .nav-menu, .nav-cta { display: none; }
+      .nav-toggle { display: block; }
+      .brand-word small { display: none; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 120px; min-height: auto;
+      }
+      .hero-visual { aspect-ratio: 4 / 5; max-height: none; }
+      .hero-meta { flex-wrap: wrap; gap: 24px; }
+
+      .section-head { grid-template-columns: 1fr; gap: 12px; margin-bottom: 48px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-figures { grid-template-columns: 1fr 1fr; }
+
+      .metier { grid-template-columns: 1fr; gap: 12px; padding: 32px 0; }
+      .metier-tags { flex-direction: row; flex-wrap: wrap; align-items: flex-start; }
+
+      .chantier-item { grid-template-columns: 1fr; gap: 24px; }
+      .chantier-caption { position: static; }
+      .chantier-visual--pair { grid-template-columns: 1fr; }
+      .chantier-frame,
+      .chantier-frame--tall,
+      .chantier-frame--portrait { aspect-ratio: 4 / 3; }
+
+      .gallery { grid-auto-rows: 100px; gap: 12px; }
+      .g-a, .g-b, .g-c, .g-d, .g-e,
+      .g-f, .g-g, .g-h, .g-i, .g-j, .g-k, .g-l { grid-column: span 12; grid-row: span 3; }
+
+      .reperes-grid { grid-template-columns: 1fr; }
+      .reperes-list { grid-template-columns: 1fr; }
+      .repere:nth-child(even) { padding-left: 0; border-left: none; }
+      .reperes-quote { position: static; }
+
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .hero-visual img { transition: none; }
+      .gallery-item img { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= NAV ================= -->
+  <nav class="nav" id="nav">
+    <a href="#top" class="brand" aria-label="Bel & Dam Bâtiment - retour à l'accueil">
+      <svg class="brand-mark" viewBox="0 0 60 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect x="3"  y="16" width="14" height="32" fill="var(--navy-800)"/>
+        <rect x="20" y="4"  width="18" height="44" fill="var(--navy-800)"/>
+        <rect x="41" y="20" width="14" height="28" fill="var(--navy-800)"/>
+        <g stroke="var(--paper)" stroke-width="1.2">
+          <line x1="5"  y1="24" x2="15" y2="24"/>
+          <line x1="5"  y1="32" x2="15" y2="32"/>
+          <line x1="5"  y1="40" x2="15" y2="40"/>
+          <line x1="22" y1="12" x2="36" y2="12"/>
+          <line x1="22" y1="20" x2="36" y2="20"/>
+          <line x1="22" y1="28" x2="36" y2="28"/>
+          <line x1="22" y1="36" x2="36" y2="36"/>
+          <line x1="22" y1="44" x2="36" y2="44"/>
+          <line x1="43" y1="28" x2="53" y2="28"/>
+          <line x1="43" y1="36" x2="53" y2="36"/>
+          <line x1="43" y1="44" x2="53" y2="44"/>
+        </g>
+        <path d="M0 50 Q30 40 60 50" stroke="var(--amber-500)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-word">
+        <strong>Bel &amp; Dam Bâtiment<sup>SARL</sup></strong>
+        <small>Travaux divers, constructions &amp; négoce</small>
+      </span>
+    </a>
+    <ul class="nav-menu">
+      <li><a href="#accueil" class="active">Accueil</a></li>
+      <li><a href="#apropos">Société</a></li>
+      <li><a href="#metiers">Métiers</a></li>
+      <li><a href="#chantiers">Chantiers</a></li>
+      <li><a href="#realisations">Réalisations</a></li>
+      <li><a href="#reperes">Repères</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Nous consulter</a>
+    <button class="nav-toggle" aria-label="Ouvrir le menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ================= HERO ================= -->
+  <header class="hero" id="accueil">
+    <div class="hero-text reveal">
+      <span class="hero-eyebrow">Tinghir · Vallée du Toudgha</span>
+      <h1 class="hero-title">
+        Bel&nbsp;&<br />
+        Dam&nbsp;<br />
+        <em>Bâtiment&nbsp;.</em>
+      </h1>
+      <p class="hero-lede">
+        Ste Bel &amp; Dam Bâtiment réunit sous un même toit l'étude et
+        l'installation de systèmes d'irrigation, les travaux de construction
+        et le négoce de matériaux.
+      </p>
+      <dl class="hero-meta">
+        <div><dt>Forme</dt><dd>SARL</dd></div>
+        <div><dt>Capital</dt><dd>600&nbsp;000 DHS</dd></div>
+        <div><dt>Siège</dt><dd>Tinghir</dd></div>
+      </dl>
+    </div>
+
+    <figure class="hero-visual reveal">
+      <img
+        src="images/hero-residence-ocre.jpg"
+        alt="Façade d'un immeuble résidentiel en pierre et enduit ocre livré dans la région du Toudgha"
+        loading="eager"
+      />
+    </figure>
+  </header>
+
+  <!-- ================= ABOUT ================= -->
+  <section class="about" id="apropos">
+    <div class="container">
+      <svg class="amazigh-line reveal" viewBox="0 0 1200 18" preserveAspectRatio="none" aria-hidden="true">
+        <g stroke="currentColor" stroke-width="1" fill="none">
+          <line x1="0" y1="9" x2="1200" y2="9" />
+          <g>
+            <path d="M60 3 L70 9 L60 15 M50 9 L70 9" />
+            <path d="M180 3 L190 9 L180 15 M170 9 L190 9" />
+            <path d="M300 3 L310 9 L300 15 M290 9 L310 9" />
+            <path d="M420 3 L430 9 L420 15 M410 9 L430 9" />
+            <path d="M540 3 L550 9 L540 15 M530 9 L550 9" />
+            <path d="M660 3 L670 9 L660 15 M650 9 L670 9" />
+            <path d="M780 3 L790 9 L780 15 M770 9 L790 9" />
+            <path d="M900 3 L910 9 L900 15 M890 9 L910 9" />
+            <path d="M1020 3 L1030 9 L1020 15 M1010 9 L1030 9" />
+            <path d="M1140 3 L1150 9 L1140 15 M1130 9 L1150 9" />
+          </g>
+        </g>
+      </svg>
+
+      <div class="section-head reveal">
+        <span class="section-num">01 &mdash; La société</span>
+        <h2 class="section-title">
+          Qui sommes-nous
+        </h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            Ste Bel &amp; Dam Bâtiment est une société marocaine à responsabilité
+            limitée, fondée à Tinghir. Enracinée
+            au cœur du pays de la région du Drâa-Tafilalet, elle intervient sur l'ensemble de la province et au-delà.
+          </p>
+          <p>
+            Notre activité couvre trois domaines principaux : les travaux divers, les travaux de construction
+            et de bâtiment, et le négoce de matériaux et d'équipements. Cette
+            polyvalence, portée par un capital social de 600 000 DHS, nous
+            permet d'accompagner un projet de bout en bout.
+          </p>
+          <p>
+            Nous travaillons pour les agriculteurs, les particuliers,
+            les coopératives, les promoteurs et les collectivités locales.
+          </p>
+        </div>
+
+        <div class="about-figures reveal">
+          <div class="figure">
+            <span class="figure-num">600<sup>k</sup></span>
+            <span class="figure-label">Capital social (DHS)</span>
+          </div>
+          <div class="figure">
+            <span class="figure-num">SARL</span>
+            <span class="figure-label">Forme juridique</span>
+          </div>
+          <div class="figure">
+            <span class="figure-num">Tinghir</span>
+            <span class="figure-label">Ancrage régional</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CHANTIERS ================= -->
+  <section class="chantiers" id="chantiers">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-num">03 &mdash; Chantiers</span>
+        <h2 class="section-title">
+          Chantiers avant / après
+        </h2>
+      </div>
+
+      <!-- Chantier 2 : Aménagement communal -->
+      <div class="chantier-item reveal">
+        <div class="chantier-caption">
+          <h3>Aménagement d'un espace communal</h3>
+          <p>
+            Aménagement complet d'un espace collectif en bordure de palmeraie&nbsp;:
+            structures maçonnées enduites, dallage béton bicolore, abris ombragés
+            à charpente métallique et alimentation en eau pour les plantations.
+          </p>
+          <div class="chantier-meta">
+            <span>Aménagement extérieur</span>
+            <span>Dallage &amp; irrigation</span>
+          </div>
+        </div>
+        <div class="chantier-visual chantier-visual--pair">
+          <div class="chantier-frame chantier-frame--portrait">
+            <img src="images/parc-toudgha-vue1.jpg"
+                 alt="Vue d'ensemble de l'espace aménagé&nbsp;: structures en béton enduit, abri à charpente métallique, dallage et plantations en cours, avec l'Atlas en arrière-plan"
+                 loading="lazy" />
+          </div>
+          <div class="chantier-frame chantier-frame--portrait">
+            <img src="images/parc-toudgha-vue2.jpg"
+                 alt="Perspective sur le dallage bicolore, les structures maçonnées et l'abri ombragé de l'espace collectif aménagé"
+                 loading="lazy" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Chantier 3 : Résidence R+2 -->
+      <div class="chantier-item reveal">
+        <div class="chantier-caption">
+          <h3>Résidence R+2 &mdash; de la structure à l'enduit</h3>
+          <p>
+            Immeuble d'habitation en cours de finition&nbsp;: passage du gros
+            œuvre en brique creuse à l'enduit extérieur uniformisé, avec pose
+            des grilles décoratives en fer forgé sur les baies.
+          </p>
+          <div class="chantier-meta">
+            <span>Résidentiel R+2</span>
+            <span>Gros œuvre &amp; finitions</span>
+          </div>
+        </div>
+        <div class="chantier-visual chantier-visual--pair">
+          <div class="chantier-frame chantier-frame--portrait">
+            <span class="chantier-tag">Gros œuvre</span>
+            <img src="images/residence-gros-oeuvre.jpg"
+                 alt="Résidence R+2 en cours de construction&nbsp;: structure porteuse en béton armé et remplissage en briques creuses apparentes, avec matériel de chantier au sol"
+                 loading="lazy" />
+          </div>
+          <div class="chantier-frame chantier-frame--portrait">
+            <span class="chantier-tag chantier-tag--accent">Enduit extérieur</span>
+            <img src="images/residence-enduit.jpg"
+                 alt="Même résidence R+2 après application de l'enduit extérieur et pose des grilles décoratives en fer forgé sur les fenêtres"
+                 loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RÉALISATIONS ================= -->
+  <section class="realisations" id="realisations">
+    <div class="container">
+      <svg class="amazigh-line reveal" viewBox="0 0 1200 18" preserveAspectRatio="none" aria-hidden="true">
+        <g stroke="currentColor" stroke-width="1" fill="none">
+          <line x1="0" y1="9" x2="1200" y2="9" />
+          <g>
+            <path d="M60 3 L70 9 L60 15 M50 9 L70 9" />
+            <path d="M180 3 L190 9 L180 15 M170 9 L190 9" />
+            <path d="M300 3 L310 9 L300 15 M290 9 L310 9" />
+            <path d="M420 3 L430 9 L420 15 M410 9 L430 9" />
+            <path d="M540 3 L550 9 L540 15 M530 9 L550 9" />
+            <path d="M660 3 L670 9 L660 15 M650 9 L670 9" />
+            <path d="M780 3 L790 9 L780 15 M770 9 L790 9" />
+            <path d="M900 3 L910 9 L900 15 M890 9 L910 9" />
+            <path d="M1020 3 L1030 9 L1020 15 M1010 9 L1030 9" />
+            <path d="M1140 3 L1150 9 L1140 15 M1130 9 L1150 9" />
+          </g>
+        </g>
+      </svg>
+
+      <div class="section-head reveal">
+        <span class="section-num">04 &mdash; Réalisations</span>
+        <h2 class="section-title">
+          Chantiers menés
+        </h2>
+      </div>
+
+      <div class="gallery">
+        <div class="gallery-item g-a reveal">
+          <img src="images/structure-industrielle.jpg"
+               alt="Grand bâtiment industriel en béton banché, structure brute, en pleine construction sur terrain sableux" loading="lazy" />
+          <div class="gallery-caption">
+            <h4>Bâtiment industriel — Gros œuvre</h4>
+            <span>Construction · Toudgha</span>
+          </div>
+        </div>
+
+        <div class="gallery-item g-b reveal">
+          <img src="images/parc-pergola-toudgha.jpg"
+               alt="Espace public aménagé avec pergolas en bois et pavage, immeubles ocres et montagnes du Haut Atlas en arrière-plan" loading="lazy" />
+          <div class="gallery-caption">
+            <h4>Aménagement urbain — Parc &amp; pergolas</h4>
+            <span>Travaux divers · Tinghir</span>
+          </div>
+        </div>
+
+        <div class="gallery-item g-c reveal">
+          <img src="images/residence-livree.jpg"
+               alt="Immeuble résidentiel à deux niveaux, façade ocre finie, cadres de fenêtres en pierre décorative" loading="lazy" />
+          <div class="gallery-caption">
+            <h4>Immeuble résidentiel — Livraison</h4>
+            <span>Bâtiment · 2024</span>
+          </div>
+        </div>
+
+        <div class="gallery-item g-d reveal">
+          <img src="images/coulage-serre.jpg"
+               alt="Ouvriers en train de couler une dalle de béton armé sur un radier de moellons, sous serres agricoles" loading="lazy" />
+          <div class="gallery-caption">
+            <h4>Radier &amp; dalle — Serres agricoles</h4>
+            <span>Ouvrage agricole</span>
+          </div>
+        </div>
+
+        <div class="gallery-item g-e reveal">
+          <img src="images/batiment-industriel-fini.jpg"
+               alt="Bâtiment industriel livré avec couverture en tôle rouge et bardage bicolore" loading="lazy" />
+          <div class="gallery-caption">
+            <h4>Halle industrielle — Second œuvre</h4>
+            <span>Bâtiment tertiaire</span>
+          </div>
+        </div>
+
+        <div class="gallery-item g-f reveal">
+          <img src="images/chantier-01.jpg"
+               alt="Chantier de construction dans la vallée du Toudgha" loading="lazy" />
+          <div class="gallery-caption">
+            <h4>Chantier en cours</h4>
+            <span>Construction · Toudgha</span>
+          </div>
+        </div>
+
+        <div class="gallery-item g-g reveal">
+          <img src="images/chantier-02.jpg"
+               alt="Travaux de construction en cours, vallée du Toudgha" loading="lazy" />
+          <div class="gallery-caption">
+            <h4>Travaux de construction</h4>
+            <span>Bâtiment · Toudgha</span>
+          </div>
+        </div>
+
+        <div class="gallery-item g-h reveal">
+          <img src="images/chantier-03.jpg"
+               alt="Ouvrage en construction, région de Tinghir" loading="lazy" />
+          <div class="gallery-caption">
+            <h4>Gros œuvre</h4>
+            <span>Construction · Tinghir</span>
+          </div>
+        </div>
+
+        <div class="gallery-item g-i reveal">
+          <img src="images/chantier-04.jpg"
+               alt="Chantier de bâtiment en cours, région de Tinghir" loading="lazy" />
+          <div class="gallery-caption">
+            <h4>Chantier bâtiment</h4>
+            <span>Construction · Tinghir</span>
+          </div>
+        </div>
+
+        <div class="gallery-item g-j reveal">
+          <img src="images/chantier-05.jpg"
+               alt="Travaux d'aménagement extérieur, vallée du Toudgha" loading="lazy" />
+          <div class="gallery-caption">
+            <h4>Aménagement extérieur</h4>
+            <span>Travaux divers · Toudgha</span>
+          </div>
+        </div>
+
+        <div class="gallery-item g-k reveal">
+          <img src="images/chantier-06.jpg"
+               alt="Ouvrage en cours de réalisation, vallée du Toudgha" loading="lazy" />
+          <div class="gallery-caption">
+            <h4>Ouvrage en cours</h4>
+            <span>Construction · Toudgha</span>
+          </div>
+        </div>
+
+        <div class="gallery-item g-l reveal">
+          <img src="images/chantier-07.jpg"
+               alt="Chantier de construction, région de Tinghir" loading="lazy" />
+          <div class="gallery-caption">
+            <h4>Chantier de construction</h4>
+            <span>Bâtiment · Tinghir</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= REPÈRES ================= -->
+  <section class="reperes" id="reperes">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-num">05 &mdash; Repères</span>
+        <h2 class="section-title">
+          Repères
+        </h2>
+      </div>
+
+        <aside class="reperes-quote reveal">
+          <blockquote>
+                  <div class="reperes-grid">
+        <dl class="reperes-list reveal">
+          <div class="repere">
+            <span class="repere-key">Dénomination</span>
+            <div class="repere-val">Ste Bel &amp; Dam Bâtiment</div>
+            <span class="repere-note">Marque commerciale et raison sociale</span>
+          </div>
+          <div class="repere">
+            <span class="repere-key">Forme juridique</span>
+            <div class="repere-val">SARL</div>
+            <span class="repere-note">Société à Responsabilité Limitée</span>
+          </div>
+          <div class="repere">
+            <span class="repere-key">Capital social</span>
+            <div class="repere-val">600 000 DHS</div>
+            <span class="repere-note">Entièrement libéré</span>
+          </div>
+          <div class="repere">
+            <span class="repere-key">ICE</span>
+            <div class="repere-val mono">001715551000048</div>
+            <span class="repere-note">Identifiant Commun de l'Entreprise</span>
+          </div>
+          <div class="repere">
+            <span class="repere-key">Siège social</span>
+            <div class="repere-val">Toudgha Soufla, Tinghir</div>
+            <span class="repere-note">Harate El Mourabitine</span>
+          </div>
+          <div class="repere">
+            <span class="repere-key">Activités déclarées</span>
+            <div class="repere-val">Divers · Construction · Négoce</div>
+            <span class="repere-note">Études, installation, travaux divers</span>
+          </div>
+        </dl>
+          </blockquote>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="section-num">06 &mdash; Contact</span>
+        <h2 class="section-title">
+          Nous contacter
+        </h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="reveal">
+          <p class="contact-lede">
+            Décrivez-nous votre projet — bâtiment, irrigation, ou simple
+            fourniture de matériaux.
+          </p>
+          <a href="https://wa.me/212610074832?text=Bonjour%2C%20je%20vous%20contacte%20au%20sujet%20d%27un%20projet." class="contact-cta" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.03c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.26 8.26 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 4.54 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.13-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.13-1.05-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.13-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.13.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29z"/>
+            </svg>
+            Nous écrire sur WhatsApp
+          </a>
+        </div>
+
+        <dl class="reveal">
+          <div class="contact-block">
+            <dt>Adresse</dt>
+            <dd>Harate El Mourabitine<br />Toudgha Soufla — Tinghir<br />Maroc</dd>
+          </div>
+          <div class="contact-block">
+            <dt>Téléphone / WhatsApp</dt>
+            <dd><a href="https://wa.me/212610074832" target="_blank" rel="noopener">+212 6 10 07 48 32</a></dd>
+          </div>
+          <div class="contact-block">
+            <dt>Courriel</dt>
+            <dd><a href="mailto:contact@beldam-batiment.ma">contact@beldam-batiment.ma</a></dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div>
+        <strong>Ste Bel &amp; Dam Bâtiment SARL</strong> &middot; Capital 600 000 DHS &middot; Tinghir, Maroc
+      </div>
+      <div class="footer-ice">ICE 001715551000048</div>
+      <div>© <span id="year"></span> Tous droits réservés</div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll state
+    const nav = document.getElementById('nav');
+    const onScroll = () => {
+      if (window.scrollY > 24) nav.classList.add('is-scrolled');
+      else nav.classList.remove('is-scrolled');
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Active section in nav
+    const sections = document.querySelectorAll('section[id], header[id]');
+    const links = document.querySelectorAll('.nav-menu a');
+    const linkMap = {};
+    links.forEach(l => { linkMap[l.getAttribute('href').slice(1)] = l; });
+
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = e.target.id;
+          links.forEach(l => l.classList.remove('active'));
+          if (linkMap[id]) linkMap[id].classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => spy.observe(s));
+
+    // Scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
