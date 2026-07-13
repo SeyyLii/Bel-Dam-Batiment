@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -63,6 +63,23 @@
       display: block;
       color: var(--navy-800);
       opacity: 0.35;
+    }
+
+    /* ---------- Texte arabe ---------- */
+    .text-ar {
+      direction: rtl;
+      text-align: right;
+      font-family: "Amiri", "Noto Naskh Arabic", serif;
+      font-size: 1.12em;
+      line-height: 1.8;
+    }
+    p.text-ar {
+      margin-top: -8px;
+      opacity: 0.92;
+    }
+    .meta-ar {
+      font-family: "Amiri", "Noto Naskh Arabic", serif;
+      font-size: 1.1em;
     }
 
     /* ---------- Navigation ---------- */
@@ -759,6 +776,10 @@
           l'installation de systèmes d'irrigation, les travaux de construction
           et le négoce de matériaux.
         </p>
+        <p class="hero-lede text-ar" lang="ar">
+          شركة بل ودام للبناء تجمع تحت سقف واحد دراسة وتركيب أنظمة الري،
+          وأشغال البناء، وتجارة مواد البناء.
+        </p>
         <dl class="hero-meta">
           <div><dt>Forme</dt><dd>SARL</dd></div>
           <div><dt>Capital</dt><dd>600&nbsp;000 DHS</dd></div>
@@ -815,6 +836,20 @@
             Nous travaillons pour les agriculteurs, les particuliers,
             les coopératives, les promoteurs et les collectivités locales.
           </p>
+
+          <p class="text-ar" lang="ar">
+            شركة بل ودام للبناء شركة مغربية ذات مسؤولية محدودة، تأسست بتنغير.
+            متجذرة في قلب جهة درعة تافيلالت، وتعمل في مختلف أنحاء الإقليم وخارجه.
+          </p>
+          <p class="text-ar" lang="ar">
+            يشمل نشاطنا ثلاثة مجالات رئيسية: الأشغال المختلفة، وأشغال البناء
+            والتشييد، وتجارة المواد والمعدات. هذا التنوع، المدعوم برأسمال قدره
+            600.000 درهم، يمكّننا من مواكبة المشروع من بدايته إلى نهايته.
+          </p>
+          <p class="text-ar" lang="ar">
+            نعمل لفائدة الفلاحين والخواص والتعاونيات والمنعشين العقاريين
+            والجماعات المحلية.
+          </p>
         </div>
 
         <div class="about-figures reveal">
@@ -854,9 +889,13 @@
             structures maçonnées enduites, dallage béton bicolore, abris ombragés
             à charpente métallique et alimentation en eau pour les plantations.
           </p>
+          <p class="text-ar" lang="ar">
+            تهيئة شاملة لفضاء جماعي على حافة الواحة: منشآت مبنية ومطلية،
+            تبليط خرساني بلونين، مظلات بهيكل معدني، وتزويد المغروسات بالماء.
+          </p>
           <div class="chantier-meta">
-            <span>Aménagement extérieur</span>
-            <span>Dallage &amp; irrigation</span>
+            <span>Aménagement extérieur · <span class="meta-ar" lang="ar">التهيئة الخارجية</span></span>
+            <span>Dallage &amp; irrigation · <span class="meta-ar" lang="ar">التبليط والري</span></span>
           </div>
         </div>
         <div class="chantier-visual chantier-visual--pair">
@@ -882,9 +921,14 @@
             œuvre en brique creuse à l'enduit extérieur uniformisé, avec pose
             des grilles décoratives en fer forgé sur les baies.
           </p>
+          <p class="text-ar" lang="ar">
+            عمارة سكنية في طور الإتمام: الانتقال من الهيكل بالآجر المجوف إلى
+            الطلاء الخارجي الموحد، مع تركيب شبابيك زخرفية من الحديد المطاوع
+            على النوافذ.
+          </p>
           <div class="chantier-meta">
-            <span>Résidentiel R+2</span>
-            <span>Gros œuvre &amp; finitions</span>
+            <span>Résidentiel R+2 · <span class="meta-ar" lang="ar">سكني ط+2</span></span>
+            <span>Gros œuvre &amp; finitions · <span class="meta-ar" lang="ar">الهيكل والتشطيبات</span></span>
           </div>
         </div>
         <div class="chantier-visual chantier-visual--pair">
@@ -1105,6 +1149,9 @@
           <p class="contact-lede">
             Décrivez-nous votre projet — bâtiment, irrigation, ou simple
             fourniture de matériaux.
+          </p>
+          <p class="contact-lede text-ar" lang="ar">
+            صِفوا لنا مشروعكم — بناء، ري، أو مجرد توريد مواد.
           </p>
           <a href="https://wa.me/212610074832?text=Bonjour%2C%20je%20vous%20contacte%20au%20sujet%20d%27un%20projet." class="contact-cta" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
