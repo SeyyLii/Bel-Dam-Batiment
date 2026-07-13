@@ -176,10 +176,10 @@
       position: absolute; inset: 0; z-index: 2;
       background: linear-gradient(
         180deg,
-        rgba(14, 31, 62, 0.55) 0%,
-        rgba(14, 31, 62, 0.18) 35%,
-        rgba(14, 31, 62, 0.30) 65%,
-        rgba(14, 31, 62, 0.72) 100%
+        rgba(14, 31, 62, 0.50) 0%,
+        rgba(14, 31, 62, 0.10) 35%,
+        rgba(14, 31, 62, 0.16) 65%,
+        rgba(14, 31, 62, 0.55) 100%
       );
       pointer-events: none;
     }
@@ -190,6 +190,24 @@
       max-width: var(--container);
       margin: 0 auto;
       padding: 140px var(--gutter) 96px;
+    }
+
+    /* Panneau semi-transparent derrière le texte pour une lisibilité
+       constante quelle que soit l'image du carrousel */
+    .hero-panel {
+      display: inline-block;
+      max-width: 640px;
+      padding: clamp(28px, 4vw, 48px);
+      background: rgba(14, 31, 62, 0.18);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(250, 246, 236, 0.14);
+      border-radius: 4px 4px 80px 4px;
+      box-shadow: 0 12px 48px rgba(14, 31, 62, 0.18);
+    }
+    /* Si le navigateur ne supporte pas le flou, on compense en opacité */
+    @supports not (backdrop-filter: blur(10px)) {
+      .hero-panel { background: rgba(14, 31, 62, 0.5); }
     }
 
     .hero-eyebrow {
@@ -208,16 +226,14 @@
       font-variation-settings: "opsz" 144;
       font-size: clamp(44px, 6.2vw, 88px);
       line-height: 0.98; letter-spacing: -0.02em;
-      margin: 0 0 40px; color: var(--paper);
-      text-shadow: 0 2px 24px rgba(14, 31, 62, 0.4);
+      margin: 0 0 32px; color: var(--paper);
     }
     .hero-title em { font-style: italic; font-weight: 300; color: var(--amber-400); }
 
     .hero-lede {
       font-size: 16px; line-height: 1.6;
-      color: rgba(250, 246, 236, 0.88);
-      max-width: 44ch; margin-bottom: 40px;
-      text-shadow: 0 1px 12px rgba(14, 31, 62, 0.35);
+      color: rgba(250, 246, 236, 0.9);
+      max-width: 44ch; margin: 0 0 32px;
     }
 
     .hero-meta {
@@ -627,7 +643,8 @@
       .nav-toggle { display: block; }
       .brand-word small { display: none; }
 
-      .hero-content { padding: 120px var(--gutter) 88px; }
+      .hero-content { padding: 110px var(--gutter) 88px; }
+      .hero-panel { max-width: 100%; border-radius: 4px 4px 56px 4px; }
       .hero-meta { flex-wrap: wrap; gap: 24px; }
       .hero-dots { bottom: 28px; }
 
@@ -730,22 +747,24 @@
     <div class="hero-overlay"></div>
 
     <div class="hero-content reveal">
-      <span class="hero-eyebrow">Tinghir · Vallée du Toudgha</span>
-      <h1 class="hero-title">
-        Bel&nbsp;&<br />
-        Dam&nbsp;<br />
-        <em>Bâtiment&nbsp;.</em>
-      </h1>
-      <p class="hero-lede">
-        Ste Bel &amp; Dam Bâtiment réunit sous un même toit l'étude et
-        l'installation de systèmes d'irrigation, les travaux de construction
-        et le négoce de matériaux.
-      </p>
-      <dl class="hero-meta">
-        <div><dt>Forme</dt><dd>SARL</dd></div>
-        <div><dt>Capital</dt><dd>600&nbsp;000 DHS</dd></div>
-        <div><dt>Siège</dt><dd>Tinghir</dd></div>
-      </dl>
+      <div class="hero-panel">
+        <span class="hero-eyebrow">Tinghir · Vallée du Toudgha</span>
+        <h1 class="hero-title">
+          Bel&nbsp;&<br />
+          Dam&nbsp;<br />
+          <em>Bâtiment&nbsp;.</em>
+        </h1>
+        <p class="hero-lede">
+          Ste Bel &amp; Dam Bâtiment réunit sous un même toit l'étude et
+          l'installation de systèmes d'irrigation, les travaux de construction
+          et le négoce de matériaux.
+        </p>
+        <dl class="hero-meta">
+          <div><dt>Forme</dt><dd>SARL</dd></div>
+          <div><dt>Capital</dt><dd>600&nbsp;000 DHS</dd></div>
+          <div><dt>Siège</dt><dd>Tinghir</dd></div>
+        </dl>
+      </div>
     </div>
 
     <div class="hero-dots" role="tablist" aria-label="Sélection de l'image d'arrière-plan"></div>
