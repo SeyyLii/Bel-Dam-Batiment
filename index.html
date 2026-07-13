@@ -67,6 +67,10 @@
 
     /* ---------- Navigation ---------- */
     .nav {
+      /* Over the hero image: light foreground */
+      --nav-fg: var(--paper);
+      --nav-fg-soft: rgba(250, 246, 236, 0.78);
+      --nav-window: rgba(14, 31, 62, 0.9);
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 50;
@@ -78,6 +82,10 @@
       border-bottom: 1px solid transparent;
     }
     .nav.is-scrolled {
+      /* On solid background: back to navy foreground */
+      --nav-fg: var(--navy-800);
+      --nav-fg-soft: var(--navy-700);
+      --nav-window: var(--paper);
       background: rgba(250, 246, 236, 0.94);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
@@ -89,7 +97,8 @@
     .brand-mark { width: 44px; height: 40px; flex-shrink: 0; }
     .brand-word {
       display: flex; flex-direction: column;
-      line-height: 1; color: var(--navy-800);
+      line-height: 1; color: var(--nav-fg);
+      transition: color 0.35s ease;
     }
     .brand-word strong {
       font-family: var(--font-sans);
@@ -104,8 +113,9 @@
     .brand-word small {
       font-family: var(--font-display);
       font-style: italic; font-weight: 400;
-      font-size: 11px; color: var(--navy-700);
+      font-size: 11px; color: var(--nav-fg-soft);
       margin-top: 4px; letter-spacing: 0.01em;
+      transition: color 0.35s ease;
     }
 
     .nav-menu {
@@ -115,42 +125,78 @@
     .nav-menu a {
       font-size: 12px; font-weight: 500;
       letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--navy-800); padding: 6px 0;
+      color: var(--nav-fg); padding: 6px 0;
       border-bottom: 1px solid transparent;
       transition: border-color 0.2s ease, color 0.2s ease;
     }
-    .nav-menu a:hover { color: var(--amber-600); }
+    .nav-menu a:hover { color: var(--amber-400); }
     .nav-menu a.active { border-bottom-color: var(--amber-500); }
 
     .nav-cta {
       font-size: 12px; font-weight: 500;
       letter-spacing: 0.22em; text-transform: uppercase;
-      padding: 12px 22px; background: var(--navy-800);
-      color: var(--paper); border-radius: 999px;
-      transition: background 0.2s ease;
+      padding: 12px 22px; background: var(--paper);
+      color: var(--navy-900); border-radius: 999px;
+      transition: background 0.35s ease, color 0.35s ease;
     }
-    .nav-cta:hover { background: var(--amber-500); }
+    .nav.is-scrolled .nav-cta { background: var(--navy-800); color: var(--paper); }
+    .nav-cta:hover { background: var(--amber-500); color: var(--navy-900); }
 
     .nav-toggle { display: none; background: none; border: none; padding: 8px; cursor: pointer; }
-    .nav-toggle span { display: block; width: 24px; height: 1.5px; background: var(--navy-800); margin: 6px 0; }
+    .nav-toggle span { display: block; width: 24px; height: 1.5px; background: var(--nav-fg); margin: 6px 0; transition: background 0.35s ease; }
 
-    /* ---------- Hero ---------- */
+    /* ---------- Hero (plein écran, carrousel) ---------- */
     .hero {
-      padding: 140px var(--gutter) 80px;
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background: var(--navy-900);
+    }
+
+    .hero-slides { position: absolute; inset: 0; z-index: 0; }
+    .hero-slide {
+      position: absolute; inset: 0;
+      opacity: 0;
+      transition: opacity 1.4s ease;
+    }
+    .hero-slide img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transform: scale(1.08);
+      transition: transform 9s ease;
+    }
+    .hero-slide.is-active { opacity: 1; z-index: 1; }
+    .hero-slide.is-active img { transform: scale(1); }
+
+    /* Voile pour la lisibilité du texte et de la nav */
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 2;
+      background: linear-gradient(
+        180deg,
+        rgba(14, 31, 62, 0.55) 0%,
+        rgba(14, 31, 62, 0.18) 35%,
+        rgba(14, 31, 62, 0.30) 65%,
+        rgba(14, 31, 62, 0.72) 100%
+      );
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative; z-index: 3;
+      width: 100%;
       max-width: var(--container);
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: minmax(280px, 1fr) minmax(0, 1.6fr);
-      gap: clamp(24px, 5vw, 80px);
-      align-items: end;
-      min-height: 100vh;
+      padding: 140px var(--gutter) 96px;
     }
 
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 10px;
       font-size: 11px; font-weight: 500;
       letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--amber-600); margin-bottom: 32px;
+      color: var(--amber-400); margin-bottom: 32px;
     }
     .hero-eyebrow::before {
       content: ""; width: 32px; height: 1px; background: var(--amber-500);
@@ -162,66 +208,52 @@
       font-variation-settings: "opsz" 144;
       font-size: clamp(44px, 6.2vw, 88px);
       line-height: 0.98; letter-spacing: -0.02em;
-      margin: 0 0 40px; color: var(--navy-900);
+      margin: 0 0 40px; color: var(--paper);
+      text-shadow: 0 2px 24px rgba(14, 31, 62, 0.4);
     }
-    .hero-title em { font-style: italic; font-weight: 300; color: var(--amber-600); }
+    .hero-title em { font-style: italic; font-weight: 300; color: var(--amber-400); }
 
     .hero-lede {
       font-size: 16px; line-height: 1.6;
-      color: rgba(14, 31, 62, 0.72);
-      max-width: 40ch; margin-bottom: 40px;
+      color: rgba(250, 246, 236, 0.88);
+      max-width: 44ch; margin-bottom: 40px;
+      text-shadow: 0 1px 12px rgba(14, 31, 62, 0.35);
     }
 
     .hero-meta {
       display: flex; gap: 40px;
-      padding-top: 24px; border-top: 1px solid var(--line);
+      padding-top: 24px; margin: 0;
+      border-top: 1px solid rgba(250, 246, 236, 0.28);
     }
     .hero-meta > div { display: flex; flex-direction: column; gap: 4px; }
     .hero-meta dt {
       font-size: 10px; font-weight: 500;
       letter-spacing: 0.24em; text-transform: uppercase;
-      color: rgba(14, 31, 62, 0.6);
+      color: rgba(250, 246, 236, 0.62);
     }
     .hero-meta dd {
       font-family: var(--font-display);
       font-size: 22px; font-weight: 500; margin: 0;
-      color: var(--navy-900);
+      color: var(--paper);
     }
 
-    .hero-visual {
-      position: relative;
-      aspect-ratio: 4 / 5;
-      max-height: 78vh;
-      overflow: hidden;
-      border-radius: 4px 4px 180px 4px;
-      background: var(--navy-800);
-      margin: 0;
+    /* Indicateurs du carrousel */
+    .hero-dots {
+      position: absolute;
+      right: var(--gutter); bottom: 40px;
+      z-index: 4;
+      display: flex; gap: 10px;
     }
-    .hero-visual img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      object-position: 35% center;
-      transform: scale(1.02);
-      transition: transform 8s ease;
+    .hero-dot {
+      width: 32px; height: 3px;
+      padding: 0; border: none;
+      background: rgba(250, 246, 236, 0.35);
+      cursor: pointer;
+      transition: background 0.3s ease;
+      border-radius: 999px;
     }
-    .hero-visual:hover img { transform: scale(1.08); }
-
-    .hero-location {
-      position: absolute; right: 0; bottom: 0;
-      background: var(--navy-900); color: var(--paper);
-      padding: 24px 32px;
-      display: flex; flex-direction: column; gap: 4px;
-      min-width: 220px;
-      border-top: 3px solid var(--amber-500);
-    }
-    .hero-location small {
-      font-size: 10px; letter-spacing: 0.28em;
-      text-transform: uppercase; color: rgba(250, 246, 236, 0.6);
-    }
-    .hero-location strong {
-      font-family: var(--font-display);
-      font-size: 24px; font-weight: 600; letter-spacing: 0.02em;
-    }
+    .hero-dot:hover { background: rgba(250, 246, 236, 0.65); }
+    .hero-dot.is-active { background: var(--amber-500); }
 
     /* ---------- Section shell ---------- */
     section { padding: clamp(80px, 10vw, 140px) 0; position: relative; }
@@ -489,13 +521,11 @@
 
     /* ---------- Repères ---------- */
     .reperes .section-head { margin-bottom: 40px; }
-    .reperes-grid {
-      display: grid; grid-template-columns: 1.4fr 1fr;
-      gap: clamp(24px, 5vw, 80px); align-items: start;
-    }
     .reperes-list {
       display: grid; grid-template-columns: 1fr 1fr; gap: 0;
       border-top: 1px solid var(--line-strong);
+      max-width: 980px;
+      margin: 0;
     }
     .repere {
       padding: 32px 24px 32px 0;
@@ -521,32 +551,6 @@
       display: block; margin-top: 6px;
       font-family: var(--font-sans);
       font-size: 13px; color: rgba(14, 31, 62, 0.6);
-    }
-
-    .reperes-quote {
-      padding: 40px;
-      background: var(--paper-warm);
-      border-radius: 4px 4px 4px 120px;
-      position: sticky; top: 100px;
-      border-left: 3px solid var(--amber-500);
-    }
-    .reperes-quote blockquote {
-      margin: 0;
-      font-family: var(--font-display);
-      font-weight: 400; font-style: italic;
-      font-size: clamp(20px, 2vw, 26px); line-height: 1.35;
-      color: var(--navy-900);
-    }
-    .reperes-quote blockquote::before {
-      content: "«"; display: block;
-      font-size: 4em; line-height: 0.6;
-      color: var(--amber-500); margin-bottom: 12px;
-    }
-    .reperes-quote cite {
-      display: block; margin-top: 24px;
-      font-family: var(--font-sans); font-style: normal;
-      font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(14, 31, 62, 0.6);
     }
 
     /* ---------- Contact ---------- */
@@ -623,12 +627,9 @@
       .nav-toggle { display: block; }
       .brand-word small { display: none; }
 
-      .hero {
-        grid-template-columns: 1fr;
-        padding-top: 120px; min-height: auto;
-      }
-      .hero-visual { aspect-ratio: 4 / 5; max-height: none; }
+      .hero-content { padding: 120px var(--gutter) 88px; }
       .hero-meta { flex-wrap: wrap; gap: 24px; }
+      .hero-dots { bottom: 28px; }
 
       .section-head { grid-template-columns: 1fr; gap: 12px; margin-bottom: 48px; }
       .about-grid { grid-template-columns: 1fr; }
@@ -648,17 +649,17 @@
       .g-a, .g-b, .g-c, .g-d, .g-e,
       .g-f, .g-g, .g-h, .g-i, .g-j, .g-k, .g-l { grid-column: span 12; grid-row: span 3; }
 
-      .reperes-grid { grid-template-columns: 1fr; }
       .reperes-list { grid-template-columns: 1fr; }
       .repere:nth-child(even) { padding-left: 0; border-left: none; }
-      .reperes-quote { position: static; }
 
       .contact-grid { grid-template-columns: 1fr; }
     }
 
     @media (prefers-reduced-motion: reduce) {
       .reveal { opacity: 1; transform: none; transition: none; }
-      .hero-visual img { transition: none; }
+      .hero-slide { transition: opacity 0.4s ease; }
+      .hero-slide img { transform: none; transition: none; }
+      .hero-slide.is-active img { transform: none; }
       .gallery-item img { transition: none; }
     }
   </style>
@@ -669,10 +670,10 @@
   <nav class="nav" id="nav">
     <a href="#top" class="brand" aria-label="Bel & Dam Bâtiment - retour à l'accueil">
       <svg class="brand-mark" viewBox="0 0 60 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <rect x="3"  y="16" width="14" height="32" fill="var(--navy-800)"/>
-        <rect x="20" y="4"  width="18" height="44" fill="var(--navy-800)"/>
-        <rect x="41" y="20" width="14" height="28" fill="var(--navy-800)"/>
-        <g stroke="var(--paper)" stroke-width="1.2">
+        <rect x="3"  y="16" width="14" height="32" fill="var(--nav-fg)"/>
+        <rect x="20" y="4"  width="18" height="44" fill="var(--nav-fg)"/>
+        <rect x="41" y="20" width="14" height="28" fill="var(--nav-fg)"/>
+        <g stroke="var(--nav-window)" stroke-width="1.2">
           <line x1="5"  y1="24" x2="15" y2="24"/>
           <line x1="5"  y1="32" x2="15" y2="32"/>
           <line x1="5"  y1="40" x2="15" y2="40"/>
@@ -707,7 +708,28 @@
 
   <!-- ================= HERO ================= -->
   <header class="hero" id="accueil">
-    <div class="hero-text reveal">
+    <!-- Banque d'images du carrousel -->
+    <div class="hero-slides" aria-hidden="true">
+      <div class="hero-slide is-active">
+        <img src="images/hero-01-residence-ocre.jpg"
+             alt="" loading="eager" fetchpriority="high" />
+      </div>
+      <div class="hero-slide">
+        <img src="images/hero-02-halle-industrielle.jpg" alt="" loading="lazy" />
+      </div>
+      <div class="hero-slide">
+        <img src="images/hero-03-parc-toudgha.jpg" alt="" loading="lazy" />
+      </div>
+      <div class="hero-slide">
+        <img src="images/hero-04-batiment-jaune.jpg" alt="" loading="lazy" />
+      </div>
+      <div class="hero-slide">
+        <img src="images/hero-05-bassin-irrigation.jpg" alt="" loading="lazy" />
+      </div>
+    </div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content reveal">
       <span class="hero-eyebrow">Tinghir · Vallée du Toudgha</span>
       <h1 class="hero-title">
         Bel&nbsp;&<br />
@@ -726,13 +748,7 @@
       </dl>
     </div>
 
-    <figure class="hero-visual reveal">
-      <img
-        src="images/hero-residence-ocre.jpg"
-        alt="Façade d'un immeuble résidentiel en pierre et enduit ocre livré dans la région du Toudgha"
-        loading="eager"
-      />
-    </figure>
+    <div class="hero-dots" role="tablist" aria-label="Sélection de l'image d'arrière-plan"></div>
   </header>
 
   <!-- ================= ABOUT ================= -->
@@ -1020,44 +1036,38 @@
         </h2>
       </div>
 
-        <aside class="reperes-quote reveal">
-          <blockquote>
-                  <div class="reperes-grid">
-        <dl class="reperes-list reveal">
-          <div class="repere">
-            <span class="repere-key">Dénomination</span>
-            <div class="repere-val">Ste Bel &amp; Dam Bâtiment</div>
-            <span class="repere-note">Marque commerciale et raison sociale</span>
-          </div>
-          <div class="repere">
-            <span class="repere-key">Forme juridique</span>
-            <div class="repere-val">SARL</div>
-            <span class="repere-note">Société à Responsabilité Limitée</span>
-          </div>
-          <div class="repere">
-            <span class="repere-key">Capital social</span>
-            <div class="repere-val">600 000 DHS</div>
-            <span class="repere-note">Entièrement libéré</span>
-          </div>
-          <div class="repere">
-            <span class="repere-key">ICE</span>
-            <div class="repere-val mono">001715551000048</div>
-            <span class="repere-note">Identifiant Commun de l'Entreprise</span>
-          </div>
-          <div class="repere">
-            <span class="repere-key">Siège social</span>
-            <div class="repere-val">Toudgha Soufla, Tinghir</div>
-            <span class="repere-note">Harate El Mourabitine</span>
-          </div>
-          <div class="repere">
-            <span class="repere-key">Activités déclarées</span>
-            <div class="repere-val">Divers · Construction · Négoce</div>
-            <span class="repere-note">Études, installation, travaux divers</span>
-          </div>
-        </dl>
-          </blockquote>
-        </aside>
-      </div>
+      <dl class="reperes-list reveal">
+        <div class="repere">
+          <span class="repere-key">Dénomination</span>
+          <div class="repere-val">Ste Bel &amp; Dam Bâtiment</div>
+          <span class="repere-note">Marque commerciale et raison sociale</span>
+        </div>
+        <div class="repere">
+          <span class="repere-key">Forme juridique</span>
+          <div class="repere-val">SARL</div>
+          <span class="repere-note">Société à Responsabilité Limitée</span>
+        </div>
+        <div class="repere">
+          <span class="repere-key">Capital social</span>
+          <div class="repere-val">600 000 DHS</div>
+          <span class="repere-note">Entièrement libéré</span>
+        </div>
+        <div class="repere">
+          <span class="repere-key">ICE</span>
+          <div class="repere-val mono">001715551000048</div>
+          <span class="repere-note">Identifiant Commun de l'Entreprise</span>
+        </div>
+        <div class="repere">
+          <span class="repere-key">Siège social</span>
+          <div class="repere-val">Toudgha Soufla, Tinghir</div>
+          <span class="repere-note">Harate El Mourabitine</span>
+        </div>
+        <div class="repere">
+          <span class="repere-key">Activités déclarées</span>
+          <div class="repere-val">Divers · Construction · Négoce</div>
+          <span class="repere-note">Études, installation, travaux divers</span>
+        </div>
+      </dl>
     </div>
   </section>
 
@@ -1151,6 +1161,66 @@
       });
     }, { threshold: 0.12 });
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // ---------- Carrousel du hero ----------
+    // Durée d'affichage de chaque image (en millisecondes)
+    const HERO_INTERVAL = 5000;
+
+    (function initHeroCarousel() {
+      const slides = Array.from(document.querySelectorAll('.hero-slide'));
+      if (slides.length < 2) return;
+
+      const dotsWrap = document.querySelector('.hero-dots');
+      let current = slides.findIndex(s => s.classList.contains('is-active'));
+      if (current < 0) current = 0;
+      let timer = null;
+
+      // Précharge toutes les images pour éviter tout flash lors du premier fondu
+      slides.forEach(slide => {
+        const img = slide.querySelector('img');
+        if (img && !img.complete) {
+          const pre = new Image();
+          pre.src = img.src;
+        }
+      });
+
+      // Indicateurs
+      const dots = slides.map((_, i) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'hero-dot' + (i === current ? ' is-active' : '');
+        b.setAttribute('aria-label', 'Image ' + (i + 1) + ' sur ' + slides.length);
+        b.addEventListener('click', () => { goTo(i); restart(); });
+        dotsWrap && dotsWrap.appendChild(b);
+        return b;
+      });
+
+      function goTo(index) {
+        slides[current].classList.remove('is-active');
+        dots[current] && dots[current].classList.remove('is-active');
+        current = (index + slides.length) % slides.length;
+        slides[current].classList.add('is-active');
+        dots[current] && dots[current].classList.add('is-active');
+      }
+
+      function next() { goTo(current + 1); }
+
+      function start() {
+        if (timer === null) timer = setInterval(next, HERO_INTERVAL);
+      }
+      function stop() {
+        if (timer !== null) { clearInterval(timer); timer = null; }
+      }
+      function restart() { stop(); start(); }
+
+      // Pause quand l'onglet passe en arrière-plan
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) stop();
+        else start();
+      });
+
+      start();
+    })();
 
     // Year
     document.getElementById('year').textContent = new Date().getFullYear();
